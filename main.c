@@ -320,6 +320,7 @@ void FFT_Resampler(char *in_file, char *out_file, uint32_t targetSampleRate)
                 free(output);
             }
             FFT_Resampler_Free(handle);
+            free(handle);
         }
         free(input);
     }
