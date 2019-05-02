@@ -299,7 +299,8 @@ void FFT_Resampler(char *in_file, char *out_file, uint32_t targetSampleRate)
                         inBuffer += handle->inFrameSize;
                     }
                     if (remainingSample == 0) {
-                        FFT_Resampler_Proc(handle, inBuffer - handle->inFrameSize, outBuffer);
+                        inBuffer -= handle->inFrameSize;
+                        FFT_Resampler_Proc(handle, inBuffer, outBuffer);
                         memcpy(outBuffer, handle->synthesisMem, sizeof(float) * handle->outFrameSize);
                     }
                     else {
